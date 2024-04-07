@@ -1,24 +1,39 @@
-def two_sum(list1, target):
-    # 1 Create a new dict
-    result = {}
-    # 2 Create a loop to iterate over list and take ind
-    for index, numb in enumerate(list1):
-        # 21 Create a var to find complemet
-        complement = target - numb
-        # 22 Make comparison to find complement
-        if complement in result:
-            res = [result[complement], index]
-            return res
-        else: result[numb] = index
 
+def two_sum1(list1, target):
+    # 1 Initialize dict (Hold index and value)
+    twosum_dict = {}
+    # 2 Loop through the list using enumerate func
+    # Get both index and value of list
+    for index, numb in enumerate(list1):
+        # 21 Calculate the complement of target for each numb
+        complement = target -numb
+        # 22 Check the complement in Dict
+        if complement in twosum_dict:
+            # 221 If yes return the index of comp and current numb
+            result = [twosum_dict[complement], index]
+            return result
+            # 222 Else Ad numb and its index to dic
+        twosum_dict[index] = numb
+    # Return empty list
     return []
 
-    # 3 Return the result
-
-
-
-
-
+def two_sum(list1, target):
+    # 1 Initialize dict hold index an value
+    my_dict = {}
+    # 2 Loop through the list1 with enumerate func
+    #   it holds both index and value of cuurent list
+    for index, numb in enumerate(list1):
+        # 21 Calculate the complement of target for each numb
+        complement = target - numb
+        # 22 Check the complement in dict
+        if complement in my_dict:
+            # 221 If yes return index of complement and number
+            result = [my_dict[complement], index]
+            return  result
+            # 222 Add to dict numb and its index for future checks
+        my_dict[numb] = index
+    # return empty list
+    return []
 
 
 print(two_sum([5, 1, 7, 2, 9, 3], 10))
